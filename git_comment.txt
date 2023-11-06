@@ -1,0 +1,46 @@
+# Task 1
+git checkout -b feature-newFunc
+echo -e "\n2023-10-28: Started developing a new feature." >> mydiary/diary.txt
+git add .
+git commit -m "Added diary entry for feature work"
+echo "2023-10-29: Continued work on the new feature." >> mydiary/diary.txt
+git add .
+git commit -m "Added another diary entry for feature work"
+git rebase -i HEAD~2 # merge two commits
+git checkout main
+git merge feature-newFunc
+git push --all
+
+# Task 2
+git checkout experiment
+git log # get commit hash
+git checkout main
+git cherry-pick d58314c014e17c0f8091e4f715836e14815e443d
+git push --all
+
+# Task 3
+git checkout dev
+git log
+git revert 7e9812494f2c2df534060a71792962be4d5cbab8 1a5d6d2f1f36d128e6b9a6a2236fdc0d1113638e
+git log
+git push --all
+
+# Task 4
+git checkout main
+vim frontend/style.css # modify file
+git add .
+git commit -m "Update style.css"
+git checkout feature-upload
+git diff HEAD main
+git checkout main
+git merge feature-upload # merge two commits
+vim frontend/styles.css # fix confilicts
+git add .
+git commit
+git push --all
+
+# Task 5
+git switch documentation
+git rebase -i HEAD~4 # swap two commits and squash last commit into previous commit
+git checkout main
+git push --all --force
